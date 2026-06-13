@@ -13,6 +13,18 @@ class Character(ABC):
         pass
 
 
+class IAttack(ABC):
+    @abstractmethod
+    def attack(self, target):
+        pass
+
+
+class NPC(Character):
+    def __init__(self, id, name, hp, damage, attitude):
+        super().__init__(id, name, hp, damage)
+        self.attitude = attitude
+
+
 def main():
     print("Program RPG")
 
