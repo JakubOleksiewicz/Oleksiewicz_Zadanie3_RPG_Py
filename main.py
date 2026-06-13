@@ -61,13 +61,27 @@ def main():
     skeleton1 = Skeleton(1, "Dr. Bones")
     ork1 = Ork(2, "Azog")
 
-    skeleton1.show_info()
-    ork1.show_info()
+    characters = [skeleton1, ork1]
+
+    for character in characters:
+        character.show_info()
 
     print("--------------------------------------")
 
-    skeleton1.attack(ork1)
-    ork1.attack(skeleton1)
+    attacker1 = skeleton1
+    attacker2 = ork1
+
+    print("-=-=( Bitwa: " + skeleton1.name + " vs " + ork1.name + " )=-=-")
+
+    while ork1.hp > 0 and skeleton1.hp > 0:
+        attacker1.attack(ork1)
+
+        if ork1.hp <= 0:
+            break
+
+        attacker2.attack(skeleton1)
+
+    print("-=-=( Wygrywa: " + (skeleton1.name if ork1.hp == 0 else ork1.name) + " )=-=-")
 
 
 main()
