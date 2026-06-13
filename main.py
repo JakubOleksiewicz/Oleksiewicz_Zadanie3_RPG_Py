@@ -25,8 +25,36 @@ class NPC(Character):
         self.attitude = attitude
 
 
+class Skeleton(NPC, IAttack):
+    def __init__(self, id, name):
+        super().__init__(id, name, 40, 8, "Agresywny")
+
+    def attack(self, target):
+        pass
+
+    def show_info(self):
+        print("Szkielet | ID: " + str(self.id) + " | Nazwa: " + self.name + " | HP: " + str(self.hp))
+
+
+class Ork(NPC, IAttack):
+    def __init__(self, id, name):
+        super().__init__(id, name, 70, 12, "Agresywny")
+
+    def attack(self, target):
+        pass
+
+    def show_info(self):
+        print("Ork | ID: " + str(self.id) + " | Nazwa: " + self.name + " | HP: " + str(self.hp))
+
+
 def main():
-    print("Program RPG")
+    skeleton1 = Skeleton(1, "Dr. Bones")
+    ork1 = Ork(2, "Azog")
+
+    characters = [skeleton1, ork1]
+
+    for character in characters:
+        character.show_info()
 
 
 main()
